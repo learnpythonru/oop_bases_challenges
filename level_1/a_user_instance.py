@@ -14,5 +14,6 @@ class User:
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    person = User('Pavel', 'BillieJinn', 24, '88005553535')
+    print(f'Информация о пользователе: {person.name}, {person.username}, {person.age}, {person.phone}')
 
