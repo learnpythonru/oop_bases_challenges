@@ -15,9 +15,9 @@ class Product:
         self.price = price
         self.weight = weight
 
-    def return_info(self):
+    def __str__(self):
         return f'Информация о продукте: {self.name}, {self.description}, {self.price}, {self.weight}'
 
 if __name__ == '__main__':
     person = Product('RedBull', 'energy drink', 25.49, 500)
-    print(person.return_info())
+    print(person)
