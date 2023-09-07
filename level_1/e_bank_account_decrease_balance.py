@@ -8,10 +8,25 @@
     3. Затем уменьшите баланс до отрицательного значения и посмотрите на результат
 """
 
-
 class BankAccount:
-    pass  # код писать тут
+    def __init__(self, owner_full_name: str, balance: float):
+        self.owner_full_name = owner_full_name
+        self.balance = balance
+
+    def increase_balance(self, income: float):
+        self.balance += income
+        return self.balance
+    
+    def decrese_balance(self, expense: float):
+        self.balance -= expense
+        if self.balance < 0:
+            raise ValueError
+        else:
+            return self.balance
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    account = BankAccount(owner_full_name='Petr Petrovich Petrov', balance=100.01)
+    account.decrese_balance(100)
+    print(f'current balance {account.balance}')
+    account.decrese_balance(1)
