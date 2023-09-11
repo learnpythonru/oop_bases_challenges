@@ -7,19 +7,20 @@
     2. Создайте экземпляр класса банковского счета и распечатайте баланс.
     3. Увеличьте баланс счета у экземпляра класса с помощью метода increase_balance и снова распечтайте текущий баланс.
 """
+import decimal
 
 
 class BankAccount:
-    def __init__(self, owner_full_name: str, balance: float):
+    def __init__(self, owner_full_name: str, balance: str) -> None:
         self.owner_full_name = owner_full_name
-        self.balance = balance
+        self.balance = decimal.Decimal(balance).quantize(decimal.Decimal('1.00'))
 
-    def increase_balance(self, income: float):
-        self.balance += income
-        return self.balance
+    def increase_balance(self, income: str) -> None:
+        self.balance += decimal.Decimal(income).quantize(decimal.Decimal('1.00'))
+
 
 if __name__ == '__main__':
-    account = BankAccount(owner_full_name='Ivan Ivanov', balance=1000.01)
+    account = BankAccount(owner_full_name='Ivan Ivanov', balance=0.2)
     print(f'balance before salary payment: {account.balance}')
-    account.increase_balance(100.01)
+    account.increase_balance(0.1)
     print(f'current balance {account.balance}')

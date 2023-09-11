@@ -7,9 +7,10 @@
     3. Распечатайте о нем иформацию в таком виде: Информация о продукте: название, описание, цена, вес
 """
 
+import decimal
 
 class Product:
-    def __init__(self, name: str, description: str, price: float, weight: float):
+    def __init__(self, name: str, description: str, price: decimal.Decimal, weight: float) -> None:
         self.name = name
         self.description = description
         self.price = price
