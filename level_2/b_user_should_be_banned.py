@@ -11,19 +11,20 @@ SURNAMES_TO_BAN = ['Vaughn', 'Wilhelm', 'Santaros', 'Porter', 'Smith']
 
 
 class User:
-    def __init__(self, name: str, surname: str, age: int):
+    def __init__(self, name: str, surname: str, age: int) -> None:
         self.name = name
         self.surname = surname
         self.age = age
-        self.status = 'not banned'
 
-    def should_be_banned(self):
+    def should_be_banned(self) -> str:
         if self.surname in SURNAMES_TO_BAN:
-            self.status = 'banned'
-        return self.status
+            return f'user {self.name} is banned'
+        else:
+            return f'user {self.name} is not banned'
     
 if __name__ == '__main__':
-    user_1 = User(name='Piter', surname='Pen', age=100)
-    print(f'{user_1.name} {user_1.should_be_banned()}')
+    not_banned_user = User(name='Piter', surname='Pen', age=100)
+    print(not_banned_user.should_be_banned())
+
     banned_user = User(name='David', surname='Porter', age=50)
-    print(f'{banned_user.name} {banned_user.should_be_banned()}')
+    print(banned_user.should_be_banned())

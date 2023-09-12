@@ -15,20 +15,26 @@ def generate_short_user_description(username: str, user_id: int, name: str):
 
 
 class User:
-    def __init__(self, username: str, user_id: int, name: str):
+    def __init__(self, username: str, user_id: int, name: str) -> None:
         self.username = username
         self.user_id = user_id
         self.name = name
 
-    def make_username_capitalised(self):
+    def get_username_capitalized(self) -> None:
         return self.username.capitalize()
     
-    def generate_short_user_description(self):
-        capitalised_username = user.make_username_capitalised()    
-        return f'User with id {self.user_id} has {capitalised_username} username and {self.name} name'
+    @property
+    def short_description(self) -> str:  
+        return f'User with id {self.user_id} has {self.username} username and {self.name} name'
+    
+    def generate_short_description(self) -> str:
+        capitalized_username = self.get_username_capitalized()    
+        return f'User with id {self.user_id} has {capitalized_username} username and {self.name} name'
     
 if __name__ == '__main__':
-    user = User(username='don', user_id=12, name='Kolya')
-    user.make_username_capitalised()
-    short_description = user.generate_short_user_description()
+    kolya = User(username='don', user_id=12, name='Kolya')
+    kolya.get_username_capitalized()
+    print(kolya.short_description)
+    
+    short_description = kolya.generate_short_description()
     print(short_description)
