@@ -19,5 +19,6 @@ class Student:
 
 if __name__ == '__main__':
     person = Student('Pavel', 'Mager', 'programming', 3)
-    print(person.get_full_name())
+    full_name = person.get_full_name()
+    print(full_name)
 
