@@ -27,3 +27,4 @@ if __name__ == '__main__':
     person_whitelist = User('Pavel', 'Mager', 24)
     print(person_blacklist.should_be_banned())
     print(person_whitelist.should_be_banned())
+    

@@ -21,3 +21,4 @@ if __name__ == '__main__':
     person = User(1, 'billiejinn', 'pavel')
     print(person.make_username_capitalized())
     print(person)
+    
