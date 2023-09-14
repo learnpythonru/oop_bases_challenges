@@ -6,7 +6,7 @@
 
 
 class User:
-    def __init__(self, name: str, username: str, age: int, phone: str):
+    def __init__(self, name: str, username: str, age: int, phone: str) -> None:
         self.name = name
         self.username = username
         self.age = age
@@ -14,5 +14,6 @@ class User:
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    ivan = User(name='Иван', username='Ванька разбойник', age=30, phone='+89035555555')
+    print(f'Информация о пользователе: имя - {ivan.name}, юзернейм - {ivan.username}, возраст - {ivan.age}, телефон - {ivan.phone}.')
 

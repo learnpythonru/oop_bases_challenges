@@ -7,7 +7,7 @@
 
 
 class Student:
-    def __init__(self, name: str, surname: str, faculty: str, course: int):
+    def __init__(self, name: str, surname: str, faculty: str, course: int) -> None:
         self.name = name
         self.surname = surname
         self.faculty = faculty
@@ -18,5 +18,7 @@ class Student:
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    first_student = Student(name='Anna', surname='Petrova', faculty='singing', course=1)
+    first_students_name = first_student.get_full_name()
+    print(first_students_name)
 

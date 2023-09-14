@@ -7,10 +7,17 @@
     3. Распечатайте о нем иформацию в таком виде: Информация о продукте: название, описание, цена, вес
 """
 
+import decimal
 
 class Product:
-    pass  # код писать тут
+    def __init__(self, name: str, description: str, price: decimal.Decimal, weight: float) -> None:
+        self.name = name
+        self.description = description
+        self.price = price
+        self.weight = weight
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    gold = Product(name='gold', description='precious yellow metal', price=1000.01, weight=28.35)
+    print(f'Информация о продукте: название - {gold.name}, описание - {gold.description}, цена - {gold.price}, вес - {gold.weight}')
+
