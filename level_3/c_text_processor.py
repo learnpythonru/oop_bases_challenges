@@ -10,18 +10,24 @@
 
 
 class TextProcessor:
-    def __init__(self, text):
+    def __init__(self, text: str) -> None:
         self.text = text
 
-    def to_upper(self):
+    def to_upper(self) -> str:
         return self.text.upper()
 
-    def summarize(self):
+    def summarize(self) -> str:
         return f'Total text length: {len(self.text)}'
 
 
-# код писать тут
+class AdvancedTextProcessor(TextProcessor):
+    def summarize(self) -> str:
+        len_words_in_text = len(self.text.split(' '))
+        return super().summarize() + f", total number of words in the text: {len_words_in_text}"
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    advanced_text_processor = AdvancedTextProcessor(
+        "Переопределите метод summarize у класса AdvancedTextProcessor таким образом, чтобы он "
+        "возвращал еще и количество слов в тексте.")
+    print(advanced_text_processor.summarize())
