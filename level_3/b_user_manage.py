@@ -23,7 +23,7 @@ class UserManager:
 
 
 class AdminManager(UserManager):
-    def ban_username(self, username: str) -> None | str:
+    def ban_username(self, username: str) -> None:
         try:
             self.usernames.remove(username)
         except ValueError:
@@ -58,6 +58,7 @@ if __name__ == '__main__':
     reservoir_dogs.add_user(username='mr Pink')
     reservoir_dogs.add_user(username='mr Brown')
     reservoir_dogs.ban_username(username='mr Brown')
+    print(reservoir_dogs.get_users())
     reservoir_dogs.ban_all_users()
     print(reservoir_dogs.get_users())
 
