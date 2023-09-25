@@ -10,6 +10,7 @@
     3. Создайте экземпляр класса AlcoholProduct и проверьте, можно ли сейчас продавать алкоголь.
 """
 from datetime import datetime, timedelta
+from math import prod
 
 
 class Product:
@@ -27,14 +28,18 @@ class Product:
 
 class AlcoholProduct(Product):
     def is_available(self, hour: int) -> bool:
-        super().is_available()
         # datetime.now().hour >= 23 or datetime.now().hour <= 5
-        return hour >= 23 or hour <= 5
+        return super().is_available() and hour >= 23 or hour <= 5
 
 
 if __name__ == '__main__':
     not_allowed_hour = datetime.now().hour
     allowed_hour = (datetime.now() + timedelta(hours=9)).hour
 
-    alco_product = AlcoholProduct(title='Отвертка', price=90.99, stock_quantity=69)
-    print(alco_product.is_available(allowed_hour))
+    product = Product(title='Хлебушек', price=9.99, stock_quantity=1) # True
+    print(product.is_available())
+
+    alco_product = AlcoholProduct(title='Отвертка', price=90.99, stock_quantity=69) # True
+    alco_product = AlcoholProduct(title='Отвертка', price=90.99, stock_quantity=0) # False
+    print(alco_product.is_available(24))
+
