@@ -12,19 +12,45 @@
 
 
 class UserManager:
-    def __init__(self):
+    def __init__(self) -> None:
         self.usernames = []
 
-    def add_user(self, username):
+    def add_user(self, username: str) -> None:
         self.usernames.append(username)
 
-    def get_users(self):
+    def get_users(self) -> str:
         return self.usernames
 
 
-# код писать тут
+class AdminManager(UserManager):
+    def ban_username(self, username: str) -> None:
+        if username in self.usernames:
+            self.usernames.remove(username)
+            print(f"Username {username} has been deleted from the list.")
+        else:
+            print(f"Username {username} hasn't been found in the list.")
+
+
+class SuperAdminManager(AdminManager):
+    def ban_all_users(self) -> None:
+        if self.usernames:
+            self.usernames.clear()
+            print("All usernames has been cleared.")
+        else:
+            print("The list of usernames is already empty .")
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    usernames = SuperAdminManager()
+    username_list = ['Vaughn', 'Wilhelm', 'Santaros', 'Porter', 'Smith']
+    
+    [usernames.add_user(x) for x in username_list]
+    print(usernames.get_users())
 
+    usernames.ban_username('Wilhelm')
+    usernames.ban_username('Arsen')
+    print(usernames.get_users())
+
+    usernames.ban_all_users()
+    print(usernames.get_users())
+    usernames.ban_all_users()
