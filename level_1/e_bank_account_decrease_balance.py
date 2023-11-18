@@ -18,13 +18,16 @@ class BankAccount:
         self.balance += income
     
     def reduce_balance(self, income: float):
-        try:
-            self.balance -= income   
-            if self.balance < 0:
-                raise Exception('Баланс не может быть отрицательным')
-            return self.balance
-        except Exception as e:
-            return e
+        self.balance -= income
+        if self.balance < 0:
+            raise ValueError('Баланс не может быть отрицательным')
+        # try:
+        #     self.balance -= income   
+        #     if self.balance < 0:
+        #         raise Exception('Баланс не может быть отрицательным')
+        #     return self.balance
+        # except Exception as e:
+        #     return e
 
 
 if __name__ == '__main__':
@@ -32,5 +35,7 @@ if __name__ == '__main__':
         owner_full_name='Иванов Иван Иванович',
         balance=1000.00
     )
-    print(client1.reduce_balance(500))
-    print(client1.reduce_balance(1500))
+    client1.reduce_balance(500)
+    print(client1.balance)
+    client1.reduce_balance(1500)
+    print(client1.balance)
