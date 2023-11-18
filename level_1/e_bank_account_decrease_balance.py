@@ -21,13 +21,6 @@ class BankAccount:
         self.balance -= income
         if self.balance < 0:
             raise ValueError('Баланс не может быть отрицательным')
-        # try:
-        #     self.balance -= income   
-        #     if self.balance < 0:
-        #         raise Exception('Баланс не может быть отрицательным')
-        #     return self.balance
-        # except Exception as e:
-        #     return e
 
 
 if __name__ == '__main__':
