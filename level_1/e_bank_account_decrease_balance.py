@@ -24,8 +24,7 @@ class BankAccount:
         income = Decimal(income)
         if self.balance - income < 0:
             raise ValueError
-        else:
-            self.balance -= income
+        self.balance -= income
 
 
 if __name__ == '__main__':
