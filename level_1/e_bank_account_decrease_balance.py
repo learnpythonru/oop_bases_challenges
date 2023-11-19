@@ -1,3 +1,4 @@
+from decimal import Decimal
 """
 Мы научились увеличивать баланс у банковского аккаунта, но иногда нам нужно и уменьшать его.
 
@@ -13,21 +14,22 @@
 class BankAccount:
     def __init__(self, owner_full_name: str, balance: float) -> None:
         self.owner_full_name = owner_full_name
-        self.balance = balance
+        self.balance = Decimal(balance)
 
     def increase_balance(self, income: float) -> None:
+        income = Decimal(income)
         self.balance += income
 
-    def reduce_balance(self, income: float) -> None | ValueError:
-        self.balance -= income
-        if self.balance < 0:
+    def reduce_balance(self, income: float) -> None:
+        income = Decimal(income)
+        if self.balance - income < 0:
             raise ValueError
         else:
-            return None
+            self.balance -= income
 
 
 if __name__ == '__main__':
-    account = BankAccount('Ivanov Ivan Ivanovich', 77500.23)
-    account.reduce_balance(1000.00)
+    account = BankAccount('Ivanov Ivan Ivanovich', 60000)
+    account.reduce_balance(50000)
     print(account.balance)
     account.reduce_balance(80000.00)
