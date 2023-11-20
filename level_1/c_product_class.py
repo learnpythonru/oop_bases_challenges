@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+
 """
 У любого продукта есть такие свойства: название, описание, цена, вес
 
@@ -10,7 +13,7 @@
 
 
 class Product:
-    def __init__(self, name: str, description: str, price: float, weight: int) -> None:
+    def __init__(self, name: str, description: str, price: Decimal, weight: int) -> None:
         self.name = name
         self.description = description
         self.price = price
@@ -21,5 +24,5 @@ class Product:
 
 
 if __name__ == '__main__':
-    product = Product("milk", "milk from Danone's farm", 69.99, 930)
+    product = Product("milk", "milk from Danone's farm", Decimal('69.99'), 930)
     print(product)

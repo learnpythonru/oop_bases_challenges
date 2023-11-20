@@ -12,23 +12,21 @@ from decimal import Decimal
 
 
 class BankAccount:
-    def __init__(self, owner_full_name: str, balance: float) -> None:
+    def __init__(self, owner_full_name: str, balance: Decimal) -> None:
         self.owner_full_name = owner_full_name
-        self.balance = Decimal(balance)
+        self.balance = balance
 
-    def increase_balance(self, income: float) -> None:
-        income = Decimal(income)
+    def increase_balance(self, income: Decimal) -> None:
         self.balance += income
 
-    def reduce_balance(self, income: float) -> None:
-        income = Decimal(income)
+    def reduce_balance(self, income: Decimal) -> None:
         if self.balance - income < 0:
             raise ValueError
         self.balance -= income
 
 
 if __name__ == '__main__':
-    account = BankAccount('Ivanov Ivan Ivanovich', 60000)
-    account.reduce_balance(50000)
+    account = BankAccount('Ivanov Ivan Ivanovich', Decimal('0.3'))
+    account.reduce_balance(Decimal('0.2'))
     print(account.balance)
-    account.reduce_balance(80000.00)
+    account.reduce_balance(Decimal('40000'))
