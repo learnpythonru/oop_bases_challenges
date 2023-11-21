@@ -15,8 +15,11 @@ class BankAccount:
         self.balance = balance
 
     def increase_balance(self, income: float):
-        pass  # код писать тут
+        self.balance += income
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    user = BankAccount('Aleksandr Kurov', 9999.99)
+    print(user.balance)
+    user.increase_balance(0.01)
+    print(user.balance)
