@@ -7,10 +7,18 @@
     3. Распечатайте о нем иформацию в таком виде: Информация о продукте: название, описание, цена, вес
 """
 
-
 class Product:
-    pass  # код писать тут
+    
+    def __init__(self, name: str, description: str, price: float, weight:float):
+        self.name = name
+        self.desciption = description
+        self.price = price
+        self.weight = weight
+        
+    
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    product1 = Product('Sofa', 'Not new but comfartable', 125.7, 65.9)
+    print(f'Информация о продукте: {product1.name}, {product1.desciption}, ${product1.price}, {product1.weight}kg')
+
