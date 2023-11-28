@@ -18,8 +18,8 @@ class BankAccount:
         self.balance += income
 
 
-if __name__ == '__main__':
-    your_account = BankAccount('Zina Netikova', 99.99)
+if __name__ == "__main__":
+    your_account = BankAccount("Zina Netikova", 99.99)
     print(your_account.balance)
     your_account.increase_balance(99.99)
     print(your_account.balance)

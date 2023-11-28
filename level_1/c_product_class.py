@@ -9,16 +9,16 @@
 
 
 class Product:
-    def __init__(self, name: str, description: str, price: float, weight:float):
+    def __init__(self, name: str, description: str, price: float, weight: float):
         self.name = name
-        self.desciption = description
+        self.description = description
         self.price = price
         self.weight = weight
-        
-    
+
+    def __str__(self):
+        return f"Информация о продукте: {product1.name}, {product1.description}, ${product1.price}, {product1.weight}kg"
 
 
-if __name__ == '__main__':
-    product1 = Product('Sofa', 'Not new but comfartable', 125.7, 65.9)
-    print(f'Информация о продукте: {product1.name}, {product1.desciption}, ${product1.price}, {product1.weight}kg')
-
+if __name__ == "__main__":
+    product1 = Product("Sofa", "Not new but comfortable", 125.7, 65.9)
+    print(product1)

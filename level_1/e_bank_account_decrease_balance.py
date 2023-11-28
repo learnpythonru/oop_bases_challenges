@@ -16,16 +16,16 @@ class BankAccount:
 
     def increase_balance(self, income: float):
         self.balance += income
-    
+
     def decrease_balance(self, outcome: float):
-        if self.balance - outcome > 0:
+        if self.balance > outcome:
             self.balance -= outcome
         else:
             raise ValueError
 
 
-if __name__ == '__main__':
-    your_account = BankAccount('Kolya Pupkin', 29.99)
+if __name__ == "__main__":
+    your_account = BankAccount("Kolya Pupkin", 29.99)
     your_account.decrease_balance(9)
     print(your_account.balance)
     your_account.decrease_balance(29)
