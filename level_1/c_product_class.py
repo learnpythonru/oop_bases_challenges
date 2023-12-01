@@ -16,7 +16,7 @@ class Product:
         self.weight = weight
 
     def __str__(self):
-        return f"Информация о продукте: {product1.name}, {product1.description}, ${product1.price}, {product1.weight}kg"
+        return f"Информация о продукте: {self.name}, {self.description}, ${self.price}, {self.weight}kg"
 
 
 if __name__ == "__main__":
