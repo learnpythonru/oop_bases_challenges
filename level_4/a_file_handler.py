@@ -26,12 +26,31 @@ class FileHandler:
 
 
 class JSONHandler(FileHandler):
-    pass  # код писать тут
+    def read(self):
+        with open(self.filename, 'r') as file:
+            return json.load(file)
 
 
 class CSVHandler(FileHandler):
-    pass  # код писать тут
+    def read(self):
+        with open(self.filename, 'r') as file:
+            return csv.load(file)
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+   # Создаем экземпляры каждого из трех классов
+    file_handler = FileHandler("data/text.txt")
+    json_handler = JSONHandler("data/recipes.json")
+    csv_handler = CSVHandler("data/user_info.csv")
+
+    # С помощью экземпляра FileHandler прочитайте и распечатайте содержимое файла text.txt
+    print("FileHandler:")
+    print(file_handler.read())
+
+    # С помощью экземпляра JSONHandler прочитайте и распечатайте содержимое файла recipes.json
+    print("\nJSONHandler:")
+    print(json_handler.read())
+
+    # С помощью экземпляра CSVHandler прочитайте и распечатайте содержимое файла user_info.csv
+    print("\nCSVHandler:")
+    print(csv_handler.read())
