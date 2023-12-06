@@ -17,40 +17,32 @@ import json
 
 
 class FileHandler:
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
         self.filename = filename
 
-    def read(self):
+    def read(self) -> str:
         with open(self.filename, 'r') as file:
             return file.read()
 
 
 class JSONHandler(FileHandler):
-    def read(self):
-        with open(self.filename, 'r') as file:
-            return json.load(file)
+    def read(self) -> dict:
+        with open(self.filename, 'r') as json_file:
+            return json.load(json_file)
 
 
 class CSVHandler(FileHandler):
-    def read(self):
-        with open(self.filename, 'r') as file:
-            return csv.load(file)
+    def read(self) -> list[dict]:
+        with open(self.filename, 'r') as csv_file:
+            csv_reader = csv.DictReader(csv_file, delimiter=',')
+            return [row for row in csv_reader]
 
 
 if __name__ == '__main__':
-   # Создаем экземпляры каждого из трех классов
-    file_handler = FileHandler("data/text.txt")
-    json_handler = JSONHandler("data/recipes.json")
-    csv_handler = CSVHandler("data/user_info.csv")
 
-    # С помощью экземпляра FileHandler прочитайте и распечатайте содержимое файла text.txt
-    print("FileHandler:")
-    print(file_handler.read())
-
-    # С помощью экземпляра JSONHandler прочитайте и распечатайте содержимое файла recipes.json
-    print("\nJSONHandler:")
-    print(json_handler.read())
-
-    # С помощью экземпляра CSVHandler прочитайте и распечатайте содержимое файла user_info.csv
-    print("\nCSVHandler:")
-    print(csv_handler.read())
+    file_reader = FileHandler('data/text.txt')
+    print(file_reader.read())
+    json_reader = JSONHandler('data/recipes.json')
+    print(json_reader.read())
+    csv_reader = CSVHandler('data/user_info.csv')
+    print(csv_reader.read())
