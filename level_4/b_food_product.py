@@ -26,11 +26,11 @@ class Product:
 
 
 class FoodProduct(Product):
-    def __init__(self, title, quantity, expiration_date: datetime) -> None:
+    def __init__(self, title: str, quantity: int, expiration_date: str) -> None:
         super().__init__(title, quantity)
         self.expiration_date = expiration_date
 
-    def is_available(self) -> int | bool:
+    def is_available(self) -> bool:
         expiration_date_datetime = datetime.strptime(self.expiration_date, '%d-%m-%Y')
         return super().is_available() and expiration_date_datetime > datetime.now()
 

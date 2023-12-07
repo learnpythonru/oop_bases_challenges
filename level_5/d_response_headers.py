@@ -16,12 +16,12 @@ class BaseResponse:
     def __init__(self, content: str):
         self.content = content
 
-    def get_byte_content_length(self):
+    def get_byte_content_length(self) -> int:
         return len(self.content.encode('utf-8'))
 
 
 class BaseHeadersMixin:
-    def generate_base_headers(self):
+    def generate_base_headers(self) -> dict:
         return {
             'Content-Type': 'application/x-www-form-urlencoded',
             'user-agent': (
@@ -30,11 +30,20 @@ class BaseHeadersMixin:
             ),
         }
 
-    def generate_headers(self):
+    def generate_headers(self) -> dict:
         return self.generate_base_headers()
 
 
-# код писать тут
+class CustomResponse(BaseHeadersMixin, BaseResponse):
+    def __init__(self, content: str):
+        super().__init__(content)
+
+    def generate_headers(self) -> dict:
+        headers = super().generate_headers()
+        headers['Content-Length'] = self.get_byte_content_length()
+        return headers
+
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    cusom_response_check = CustomResponse('Check headers for me')
+    print(cusom_response_check.generate_headers())
