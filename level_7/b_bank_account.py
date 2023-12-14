@@ -16,9 +16,22 @@ class BankAccount:
         self.owner = owner
         self.balance = balance
 
-    def decrease_balance(self, amount: float):
-        pass  # писать код тут
+    def decrease_balance(self, amount: float) -> None:
+        self.amount = amount
+        if self.balance - self.amount >= self.min_balance:
+            self.balance = self.balance - self.amount
+        else:
+            raise ValueError("You are fuckin looser. You don't have enough money. Please fund your wallet")
 
 
 if __name__ == '__main__':
-    pass  # писать код тут
+    bank_accaunt = BankAccount(owner='Oleg', balance=1000)
+    bank_accaunt.decrease_balance(200)
+    print(bank_accaunt.balance)
+    bank_accaunt.decrease_balance(899)
+    print(bank_accaunt.balance)
+    bank_accaunt.decrease_balance(2)
+    print(bank_accaunt.balance)
+
+
+
