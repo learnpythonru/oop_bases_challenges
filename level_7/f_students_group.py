@@ -15,6 +15,12 @@ class StudentGroup:
         self.group_number = group_number
         self.grades = grades
 
+    def __add__(self, other: 'StudentGroup') -> int:
+        if isinstance(other, StudentGroup):
+            return sum(self.grades + other.grades)
+        else:
+            raise ValueError("Нельзя складывать группы разных типов")
+
 
 if __name__ == '__main__':
     first_group = StudentGroup(group_number=1, grades=[1, 4, 6, 3])
