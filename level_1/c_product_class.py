@@ -9,8 +9,18 @@
 
 
 class Product:
-    pass  # код писать тут
+    def __init__(self, name: str, description: str, price: int, weight: int):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.weight = weight
+
+    def info_about_product(self):
+        return f'Data about product: {self.name}, {self.description}, {self.price}, {self.weight}'
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    phone = Product('IPhone', '15 Pro', 1100, 195)
+    info = phone.info_about_product()
+    print(info)
+    

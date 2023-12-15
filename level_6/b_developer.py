@@ -15,7 +15,7 @@ class Employee:
         self.age = age
         self.salary = salary
 
-    def get_info(self):
+    def get_info(self) -> str:
         return f'{self.name} with salary {self.salary}'
 
 
@@ -26,18 +26,29 @@ class ItDepartmentEmployee(Employee):
 
 
 class AdminMixin:
-    def increase_salary(self, employee: Employee, amount: float):
+    def increase_salary(self, employee: Employee, amount: float) -> None:
         employee.salary += amount
 
 
 class SuperAdminMixin(AdminMixin):
-    def decrease_salary(self, employee: Employee, amount: float):
+    def decrease_salary(self, employee: Employee, amount: float) -> None:
         employee.salary -= amount
 
 
-# код писать тут
+class Developer(SuperAdminMixin, ItDepartmentEmployee):
+    def __init__(self, name: str, surname: str, age: int, salary: float, language: str):
+        super().__init__(name, surname, age, salary)
+        self.language = language
+
+    def get_info(self) -> str:
+        return super().get_info() + (f' with {self.language} language')
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    developer = Developer(name='OLeg', surname='Ivanov', age=30, salary=100000, language='Python')
+    print(developer.get_info())
+    developer.increase_salary(employee=developer, amount=5000.0)
+    print(developer.get_info())
+    developer.decrease_salary(employee=developer, amount=10000)
+    print(developer.get_info())
 
