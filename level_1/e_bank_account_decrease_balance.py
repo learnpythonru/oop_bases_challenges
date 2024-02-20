@@ -10,8 +10,35 @@
 
 
 class BankAccount:
-    pass  # код писать тут
+    def __init__(self, owner_full_name: str, balance: float) -> None:
+        self.owner_full_name = owner_full_name
+        self.balance = balance
 
+    def increase_balance(self, income: float | int) -> None:
+        if (type(income) is float) or (type(income) is int):
+            self.balance += income
+        else:
+            raise TypeError
+        
+    def decrease_balance(self, outcome: float | int) -> None:
+        if (type(outcome) is float) or (type(outcome) is int):
+            if self.balance - outcome >= 0:
+                self.balance -= outcome
+            else:
+                raise ValueError
+        else:
+            raise TypeError
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    vasya_account = BankAccount('Vasya', 100)
+    print(vasya_account.balance)
+    try:
+        vasya_account.decrease_balance(50)
+    except:
+        print('Error')
+    print(vasya_account.balance)
+    try:
+        vasya_account.decrease_balance(100)
+        print(vasya_account.balance)
+    except:
+        print('Error')
